@@ -1,0 +1,45 @@
+body, html {
+    height: 100%;
+    text-align:center;
+}
+
+.main-chart {
+	padding-top: 20px;
+	
+}
+
+
+form{
+	border: 8px solid #f1f1f1;
+	padding: 50px 50px;
+	position:absolute;
+	left:35%;
+}
+
+input[type=email], input[type=password] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4A92DB;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.login-card-card-container{
+	color: #0000FF;
+}
