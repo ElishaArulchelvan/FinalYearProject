@@ -12,4 +12,6 @@ public interface AnnouncementDao extends JpaRepository<Announcement, Integer>{
 
 	List<Announcement> findAll();
 	Announcement findById(int id);
+	
+
 }

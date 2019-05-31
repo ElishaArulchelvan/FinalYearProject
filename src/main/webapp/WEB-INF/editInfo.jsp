@@ -26,11 +26,10 @@
 		<dd class="col-sm-8"> ${user.getType()}</dd>
 	</dl>
 	 <div class="card p-5">
-        <form action="${editInfoURL}" method="post" role="form" class="form-horizontal">
+        <form action="${editInfoURL}" method="post" role="form" class="form-horizontal" id="form">
 
             <input type="hidden" value="${user.id}" name="id"/>
-           
-
+      		 
             <div class="form-group row">
                 <label class="control-label col-sm-10" for="email">Email:</label>
                 <div class="col-sm-10">
@@ -65,3 +64,18 @@
         </div>
  </div>
 </body>
+
+<script>
+$('#form').submit(function(e)
+		{   
+		     $.ajax({
+		     type:'POST',
+		     url:"/editInfo",
+		     data:$(this).serialize(),
+		     success: function(){
+		      window.alert("Success");
+		     
+		     }
+			});     
+		});
+</script>

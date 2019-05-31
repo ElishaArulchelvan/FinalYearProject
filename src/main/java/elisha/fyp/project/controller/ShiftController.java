@@ -257,7 +257,7 @@ public class ShiftController{
 	{
 		Shift shift = shiftService.findOne(id);
 		shiftService.deleteShift(shift);
-		return "success";		
+		return "main";		
 	}
 	
 	@RequestMapping(value = "/google/events/delete/{id}", method = RequestMethod.GET)
@@ -478,6 +478,15 @@ public class ShiftController{
 				YearMonth month = YearMonth.from(now);
 				LocalDate start = month.atDay(1);
 				LocalDate end = month.atEndOfMonth();
+				
+				Calendar cal = Calendar.getInstance();
+				cal.add(Calendar.MONTH, -1);
+				cal.set(Calendar.DATE, 1);
+				Date firstDayOfPrevMonth = cal.getTime();
+				System.out.println("Start date of prev month " + firstDayOfPrevMonth);
+				cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+				Date lastDayOfPrevMonth = cal.getTime();
+				System.out.println("Start date of prev month " + lastDayOfPrevMonth);
 				
 				if(shift.getStart().toLocalDate().isBefore(end) && shift.getStart().toLocalDate().isAfter(start))
 				{

@@ -67,9 +67,14 @@ public class UserController {
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	@Transactional(propagation = Propagation.NEVER)
-	public String registerConfirm(@ModelAttribute User user) {
+	public String registerConfirm(@ModelAttribute User user, Model model) {
+		
 		userService.save(user);
-		return "redirect:/main";	
+		
+		List<User> users = userService.findAll();
+		model.addAttribute("usersList", users);
+		
+		return "redirect:/employeeList";	
 
 	}
 

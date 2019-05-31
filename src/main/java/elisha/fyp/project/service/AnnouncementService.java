@@ -11,5 +11,6 @@ public interface AnnouncementService {
 	List<Announcement> findAll();
 	Announcement findOne(int id);
 	
+
 	void deleteAnnouncement(Announcement announcement);
 }

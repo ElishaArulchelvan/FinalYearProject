@@ -299,11 +299,14 @@ public class RequestController {
 		Request request = requestService.findOne(id);
 		request.setStatus(Status.Declined);
 	
+		List<Request> requests = requestService.findByStatus(Status.Pending);
+		model.addAttribute("requestList", requests);
+		
 		model.addAttribute("request", request);
 		//requestService.updateRequest(request);
 		requestService.save(request);
 		
-		return "viewRequests";
+		return "redirect:/viewRequests";
 	}
 	
 	@RequestMapping(value = {"/accept/{id}"}, method = RequestMethod.GET)
@@ -312,10 +315,13 @@ public class RequestController {
 		Request request = requestService.findOne(id);
 		request.setStatus(Status.Accepted);
 		
+		List<Request> requests = requestService.findByStatus(Status.Pending);
+		model.addAttribute("requestList", requests);
+		
 		model.addAttribute("request", request);
 		requestService.save(request);
 		
-		return "viewRequests";
+		return "redirect:/viewRequests";
 	}
 	
 	@RequestMapping(value="/myRequests", method= RequestMethod.GET)

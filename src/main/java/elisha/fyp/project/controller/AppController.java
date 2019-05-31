@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.YearMonth;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,6 +57,15 @@ public class AppController {
 		long averageWeekHours = 0;
 		double holidayHours = 0;
 		
+		/*Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -1);
+		cal.set(Calendar.DATE, 1);
+		Date firstDayOfPrevMonth = cal.getTime();
+		System.out.println("Start date of prev month " + firstDayOfPrevMonth);
+		cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+		Date lastDayOfPrevMonth = cal.getTime();
+		System.out.println("Start date of prev month " + lastDayOfPrevMonth);*/
+		
 			for(Shift shift : shifts)
 			{
 				LocalTime startTime = shift.getStart().toLocalTime();
@@ -69,10 +80,11 @@ public class AppController {
 				totalTime += duration;
 				
 				
-				LocalDate now = LocalDate.now();
-				YearMonth month = YearMonth.from(now);
-				LocalDate start = month.atDay(1);
-				LocalDate end = month.atEndOfMonth();
+				YearMonth now = YearMonth.now();
+				YearMonth lastMonth = now.minusMonths(1);
+				LocalDate start = lastMonth.atDay(1);
+				LocalDate end = lastMonth.atEndOfMonth();
+				
 				
 				if(shift.getStart().toLocalDate().isBefore(end) && shift.getStart().toLocalDate().isAfter(start))
 				{
@@ -109,7 +121,7 @@ public class AppController {
 		announcementService.deleteAnnouncement(announcement);
 		
 
-		return "success";
+		return "redirect:/";
 		
 		
 	}

@@ -1,5 +1,6 @@
 package elisha.fyp.project.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 		announcementDao.delete(announcement);
 		
 	}
+
+	
 
 }
