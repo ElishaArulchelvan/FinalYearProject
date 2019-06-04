@@ -30,8 +30,7 @@
       <h5>${user.getFirstName()} </h5>
       <div> ${user.getEmail()} </div>
       <div> ${user.getType()}</div>
-      
-      <p>${user.getType()}</p>
+     
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <a class="nav-link active">You've worked "${totalTime}" hours this year </a>
